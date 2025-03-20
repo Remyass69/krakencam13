@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Embedded Video with Autoplay</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #000;
+        }
+        iframe {
+            width: 640px;
+            height: 640px;
+        }
+    </style>
+</head>
+<body>
+
+    <iframe id="videoFrame" width="640" height="640" 
+        src="https://www.eporner.com/embed/dXNl6mEmSjn/?enablejsapi=1&mute=1" 
+        frameborder="0" 
+        allow="autoplay; encrypted-media" 
+        allowfullscreen>
+    </iframe>
+
+    <script>
+        // Function to autoplay the video
+        function playVideo() {
+            var iframe = document.getElementById("videoFrame");
+            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
+        }
+
+        // Wait for the iframe to load, then attempt autoplay
+        window.onload = function() {
+            setTimeout(playVideo, 1000); // Delay to ensure iframe is ready
+        };
+    </script>
+
+</body>
+</html>
